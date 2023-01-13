@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class Info : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    public void dictionary(string Pogs)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Regex CPpog = new Regex(@"CP", RegexOptions.Singleline);
+        Debug.Log(Pogs);
+        Debug.Log(CPpog.IsMatch(Pogs));
+        //try to make it compare sprite
+        switch (Pogs)
+        {
+            case "fsaf":
+                break;
+        }
     }
 }

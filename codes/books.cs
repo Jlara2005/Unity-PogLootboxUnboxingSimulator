@@ -64,6 +64,7 @@ public class books : MonoBehaviour
             pogamount = 0;
             // make the book apear
             book.SetActive(true);
+            
             // hide the book text on the button
             booktext.SetActive(false);
             // make both arrows active

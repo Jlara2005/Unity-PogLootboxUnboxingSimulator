@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class POGS : MonoBehaviour
 {
-    // the max should change to the amount of pogs in the pog list
-    int max = 3;
+
     //Show how much the pog case have been click
     public int clicks = 0;
     // all gameobject below is the coin and button that will appear after the pog case is click on
@@ -22,12 +21,17 @@ public class POGS : MonoBehaviour
     public GameObject coin2;
     public GameObject coin3;
     public GameObject coin4;
+
+    public GameObject Boost;
+    public GameObject weakness;
+    public GameObject info;
     // check make sure that each coin have been check on
     public int check = 1;
     // This is the list of all image that have been added to the pogs list
     public Sprite[] pogList;
     // to etablish the chance which randomly pick out a pog from the pog list
     int chance;
+    public int max;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,8 +44,10 @@ public class POGS : MonoBehaviour
     void POGSCLICK()
     {
         clicks++;
-        if (clicks == 5)
+        if (clicks + Boost.GetComponent<Strength>().level - weakness.GetComponent<Rarity>().level == 5)
         {
+            // the max should change to the amount of pogs in the pog list
+            max = pogList.Length;
             // will randomly pick out a random image from the pog list
             chance = Random.Range(0, max);
             // show every option that is use for the pogs.
@@ -59,12 +65,16 @@ public class POGS : MonoBehaviour
             coin4.SetActive(true);
             //pick out a random image for the coin
             coin.GetComponent<Image>().sprite = pogList[chance];
+            info.GetComponent<Info>().dictionary(pogList[chance].ToString());
             chance = Random.Range(0, max);
             coin2.GetComponent<Image>().sprite = pogList[chance];
+            info.GetComponent<Info>().dictionary(pogList[chance].ToString());
             chance = Random.Range(0, max);
             coin3.GetComponent<Image>().sprite = pogList[chance];
+            info.GetComponent<Info>().dictionary(pogList[chance].ToString());
             chance = Random.Range(0, max);
             coin4.GetComponent<Image>().sprite = pogList[chance];
+            info.GetComponent<Info>().dictionary(pogList[chance].ToString());
             gameObject.SetActive(false);
         }
         
